@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "Grid.h"
 
 typedef enum gameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } gameScreen;
 
@@ -15,7 +16,8 @@ int main()
 
 	int frameCounter = 0; // Frame counter to switch screens
 
-	Texture2D texture = LoadTexture("src/Grid.png"); // Load a texture (optional, not used in this example)
+	//Texture2D texture = LoadTexture("src/Grid.png"); // Load a texture (optional, not used in this example)
+	Grid grid; // Create a Grid object to manage the grid texture
 
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
@@ -34,7 +36,8 @@ int main()
 				currentScreen = TITLE;
 			}
 
-			DrawTexture(texture, (screenWidth - texture.width) / 2, (screenHeight - texture.height) / 2, WHITE);
+			//DrawTexture(texture, (screenWidth - texture.width) / 2, (screenHeight - texture.height) / 2, WHITE);
+			 grid.DrawGrid(); // Draw the grid texture using the Grid class
 
 			break;
 
@@ -77,7 +80,7 @@ int main()
 		EndDrawing();
 	}
 
-	UnloadTexture(texture); // Unload texture
+	//UnloadTexture(texture); // Unload texture
 
 	CloseWindow(); // Close window and OpenGL context
 
