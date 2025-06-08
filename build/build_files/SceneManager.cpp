@@ -1,8 +1,9 @@
 #include "SceneManager.h"
 
-SceneManager::SceneManager() : currentScreen(LOGO), frameCounter(0)
+SceneManager::SceneManager() : currentScreen(TITLE), frameCounter(0), screenWidth(1280), screenHeight(720)
 {
 	// Constructor implementation
+	//InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 }
 
 SceneManager::~SceneManager()
@@ -10,7 +11,7 @@ SceneManager::~SceneManager()
 	// Destructor implementation
 }
 
-void SceneManager::CurrentScene()
+void SceneManager::CurrentScene(const int screenWidth, const int screenHeight)
 {
 	frameCounter++; // Increment frame counter
 
@@ -18,7 +19,7 @@ void SceneManager::CurrentScene()
 	{
 	case LOGO:
 		ClearBackground(BLACK);
-		DrawText("TIC TAC TOE", 190, 200, 100, WHITE);
+		//DrawText("TIC TAC TOE", 250, 100, 100, WHITE);
 
 		//if (frameCounter > 120)
 		//{
@@ -31,8 +32,10 @@ void SceneManager::CurrentScene()
 		break;
 
 	case TITLE:
-		ClearBackground(GREEN);
-		DrawText("TITLE SCREEN", 190, 200, 20, LIGHTGRAY);
+		ClearBackground(BLACK);
+		//DrawText("TITLE SCREEN", 190, 200, 20, LIGHTGRAY);
+		DrawText("TIC TAC TOE", 250, 100, 100, WHITE);
+		DrawText("PLAY", 450, 300, 100, WHITE);
 
 		//if (frameCounter > 240)
 		//{
@@ -64,4 +67,9 @@ void SceneManager::CurrentScene()
 	default:
 		break;
 	}
+}
+
+void SceneManager::GameWindow()
+{
+	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 }

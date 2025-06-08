@@ -5,18 +5,22 @@ int main()
 {
 	const int screenWidth = 1280;
 	const int screenHeight = 720;
-
+	
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-	SetTargetFPS(60); // Set our game to run at 60 frames-per-second
+	//SetTargetFPS(60); // Set our game to run at 60 frames-per-second
 
 	SceneManager sceneManager; // Create an instance of SceneManager
+
+	//sceneManager.GameWindow();
+
+	SetTargetFPS(60); // Set our game to run at 60 frames-per-second
 
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
 		BeginDrawing();
 
-		sceneManager.CurrentScene(); // Call the CurrentScene method to handle screen logic
+		sceneManager.CurrentScene(screenWidth, screenHeight); // Call the CurrentScene method to handle screen logic
 
 		EndDrawing();
 	}
