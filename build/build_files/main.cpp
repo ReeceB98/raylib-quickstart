@@ -15,6 +15,8 @@ int main()
 
 	int frameCounter = 0; // Frame counter to switch screens
 
+	Texture2D texture = LoadTexture("src/Grid.png"); // Load a texture (optional, not used in this example)
+
 	while (!WindowShouldClose()) // Detect window close button or ESC key
 	{
 		BeginDrawing();
@@ -25,12 +27,15 @@ int main()
 		{
 		case LOGO:
 			ClearBackground(BLACK);
-			DrawText("LOGO SCREEN", 190, 200, 20, LIGHTGRAY);
+			//DrawText("LOGO SCREEN", 190, 200, 20, LIGHTGRAY);
 
 			if (frameCounter > 120)
 			{
 				currentScreen = TITLE;
 			}
+
+			DrawTexture(texture, (screenWidth - texture.width) / 2, (screenHeight - texture.height) / 2, WHITE);
+
 			break;
 
 		case TITLE:
@@ -71,6 +76,8 @@ int main()
 
 		EndDrawing();
 	}
+
+	UnloadTexture(texture); // Unload texture
 
 	CloseWindow(); // Close window and OpenGL context
 
